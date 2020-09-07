@@ -1,0 +1,114 @@
+.dashboard {
+  max-width: 1200px;
+  width: 90%;
+  height: calc(90vh - 4rem);
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  .classes-list {
+    width: 80%;
+    height: 100%;
+    padding: 0 1rem;
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+      grid-gap: 2rem;
+      align-items: center;
+
+      .card {
+        cursor: pointer;
+        width: 100%;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s;
+
+        &__header {
+          color: #fff;
+          padding: 0.7rem;
+          background-color: #2e6947;
+
+          .class-title {
+            font-size: 22px;
+            margin-bottom: 1rem;
+          }
+
+          .professor {
+            color: #ddd;
+          }
+        }
+
+        &__body {
+          padding: 0.7rem;
+          color: #555;
+          border-bottom: 1px solid #ccc;
+        }
+
+        &__date {
+          color: #555;
+          padding: 0.7rem;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 4px 7px rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+  }
+
+  .notifications {
+    width: 20%;
+    height: 100%;
+    padding: 0 1rem;
+
+    &__container {
+      padding: 0.7rem;
+      max-height: 90%;
+      border-radius: 10px;
+      color: #fff;
+      background-color: #2a3f59;
+
+      &--title {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 1rem;
+      }
+
+      .notification {
+        color: #ccc;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .add-btn {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    transform: translateX(50%);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    transition: all 0.3s;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+    &:hover {
+      transform: translateX(50%) scale(1.1);
+      box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    &:active {
+      transform: translateX(50%) scale(1.05) translateY(1px);
+      box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
