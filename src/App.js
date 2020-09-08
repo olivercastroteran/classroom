@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavBar from './components/layout/NavBar';
 import Dashboard from './containers/dashboard/Dashboard';
 import ClassDetails from './components/class/ClassDetails';
+import LogIn from './containers/auth/LogIn';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/classes/:id" component={ClassDetails} />
+          <Route path="/login" component={LogIn} />
         </Switch>
       </div>
     </BrowserRouter>
