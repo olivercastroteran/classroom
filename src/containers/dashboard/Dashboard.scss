@@ -1,7 +1,7 @@
 .dashboard {
   max-width: 1200px;
   width: 90%;
-  height: calc(90vh - 4rem);
+  min-height: calc(90vh - 4rem);
   margin: 2rem auto;
   display: flex;
   justify-content: space-between;
@@ -65,6 +65,7 @@
     width: 20%;
     height: 100%;
     padding: 0 1rem;
+    line-height: 1.4;
 
     &__container {
       padding: 0.7rem;
@@ -80,8 +81,12 @@
       }
 
       .notification {
-        color: #ccc;
-        margin-bottom: 0.5rem;
+        color: #aaa;
+        margin-bottom: 0.7rem;
+
+        p:first-of-type {
+          color: #ddd;
+        }
       }
     }
   }
