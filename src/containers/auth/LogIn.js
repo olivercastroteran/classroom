@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import './auth.scss';
 
 class LogIn extends Component {
-  state = {};
+  state = {
+    email: '',
+    password: '',
+  };
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log(e);
+    console.log(this.state);
   };
 
   changeHandler = (e) => {
-    console.log(e);
+    this.setState({ [e.target.id]: e.target.value });
   };
 
   render() {
@@ -21,9 +24,11 @@ class LogIn extends Component {
           <div className="input-field">
             <input
               type="email"
+              placeholder="Email"
               id="email"
               autoComplete="off"
               onChange={this.changeHandler}
+              required
             />
             <label htmlFor="email">Email</label>
           </div>
@@ -31,8 +36,10 @@ class LogIn extends Component {
             <input
               autoComplete="off"
               type="password"
+              placeholder="Password"
               id="password"
               onChange={this.changeHandler}
+              required
             />
             <label htmlFor="password">Password</label>
           </div>

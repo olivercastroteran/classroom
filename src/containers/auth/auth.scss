@@ -21,17 +21,6 @@
   .input-field {
     width: 100%;
     padding: 1rem;
-    display: flex;
-    flex-direction: column;
-
-    label {
-      order: -1;
-      margin-left: 0.15rem;
-      transition: all 0.2s ease-in;
-      transform: translateY(20px);
-      pointer-events: none;
-      color: #555;
-    }
 
     input {
       width: 100%;
@@ -40,17 +29,41 @@
       padding: 0.2rem 0.5rem;
       border: 0;
       border-bottom: 2px solid #ccc;
+      display: block;
 
       &:focus {
         outline: none;
         border-bottom: 2px solid #2e6947;
+
+        &:invalid {
+          border-bottom: 2px solid #c0392b;
+        }
+      }
+
+      &::-webkit-input-placeholder {
+        color: #555;
       }
     }
 
-    input:focus + label {
-      transform: translateY(-2px);
+    label {
       color: #2e6947;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+      display: block;
+      transform: translateY(-250%);
+      transition: all 0.2s;
     }
+
+    input:placeholder-shown + label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-100%);
+    }
+
+    // input:focus + label {
+    //   transform: translateY(-2px);
+    //   color: #2e6947;
+    // }
 
     .btn {
       cursor: pointer;
