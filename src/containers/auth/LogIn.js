@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './auth.scss';
 
-class SignUp extends Component {
+class LogIn extends Component {
   state = {
     email: '',
     password: '',
-    firstName: '',
-    lastName: '',
   };
 
   submitHandler = (e) => {
@@ -22,29 +20,7 @@ class SignUp extends Component {
     return (
       <div className="form-container">
         <form onSubmit={this.submitHandler} autoComplete="off">
-          <h5>Sign Up</h5>
-          <div className="input-field">
-            <input
-              type="text"
-              placeholder="First Name"
-              id="firstName"
-              autoComplete="off"
-              onChange={this.changeHandler}
-              required
-            />
-            <label htmlFor="firstName">First Name</label>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              placeholder="Last Name"
-              id="lastName"
-              autoComplete="off"
-              onChange={this.changeHandler}
-              required
-            />
-            <label htmlFor="lastName">Last Name</label>
-          </div>
+          <h5>Login</h5>
           <div className="input-field">
             <input
               type="email"
@@ -68,7 +44,7 @@ class SignUp extends Component {
             <label htmlFor="password">Password</label>
           </div>
           <div className="input-field">
-            <button className="btn">Sign Up</button>
+            <button className="btn">Login</button>
           </div>
         </form>
       </div>
@@ -76,4 +52,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default LogIn;

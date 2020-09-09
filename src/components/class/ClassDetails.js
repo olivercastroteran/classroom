@@ -1,5 +1,8 @@
 import React from 'react';
 import './ClassDetails.scss';
+import Books from '../../assets/images/books.svg';
+import { ReactComponent as EditBtn } from '../../assets/icons/edit-icon.svg';
+import { ReactComponent as DeleteBtn } from '../../assets/icons/delete-icon.svg';
 
 const ClassDetails = (props) => {
   let id = props.match.params.id;
@@ -26,6 +29,13 @@ const ClassDetails = (props) => {
           <li>Ajax</li>
           <li>Node.js</li>
         </ul>
+        <div className="img-container">
+          <img src={Books} alt="books img" />
+        </div>
+      </div>
+      <div className="class-details__edit">
+        <DeleteBtn className="delete-btn" fill="red" />
+        <EditBtn className="edit-btn" />
       </div>
     </div>
   );
