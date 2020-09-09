@@ -32,6 +32,9 @@ const classReducer = (state = initState, action) => {
     case 'CREATE_CLASS':
       console.log('created class', action.class);
       return state;
+    case 'CREATE_CLASS_ERROR':
+      console.log('created class error', action.err);
+      return state;
     default:
       return state;
   }
