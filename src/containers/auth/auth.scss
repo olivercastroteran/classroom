@@ -2,7 +2,7 @@
   width: 50%;
   margin: 0 auto;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid #ccc;
@@ -67,11 +67,10 @@
 
     .btn {
       cursor: pointer;
-      width: 7rem;
       margin: 0 auto;
       border: none;
       border-radius: 50px;
-      padding: 0.5rem 1rem;
+      padding: 0.7rem 2rem;
       font-size: 1rem;
       color: #fff;
       background-color: #2e6947;
@@ -89,6 +88,47 @@
       &:active {
         transform: scale(1.03) translateY(2px);
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .add-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        cursor: pointer;
+        border-radius: 50%;
+        transition: transform 0.2s;
+      }
+
+      svg:hover {
+        transform: scale(1.2);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      svg:active {
+        transform: scale(1.1) translateY(1px);
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    ul {
+      list-style: none;
+      color: #555;
+      padding-left: 0.7rem;
+
+      li {
+        cursor: pointer;
+        margin-top: 0.2rem;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #c0392b;
+        }
       }
     }
   }
