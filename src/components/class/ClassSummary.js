@@ -1,17 +1,14 @@
 import React from 'react';
 
-const ClassSummary = () => {
+const ClassSummary = ({ course }) => {
   return (
     <div className="card">
       <div className="card__header">
-        <p className="class-title">JavaScript Master Class</p>
+        <p className="class-title">{course.title}</p>
         <p className="professor">Oliver Castro Teran</p>
       </div>
       <div className="card__body">
-        <p className="class-summary">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-          quas sit itaque fuga aspernatur dicta esse animi id iusto ipsa?
-        </p>
+        <p className="class-summary">{course.description}</p>
       </div>
       <div className="card__date">
         <p>07/09/2020</p>
