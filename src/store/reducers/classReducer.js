@@ -28,7 +28,13 @@ const initState = {
 };
 
 const classReducer = (state = initState, action) => {
-  return state;
+  switch (action.type) {
+    case 'CREATE_CLASS':
+      console.log('created class', action.class);
+      return state;
+    default:
+      return state;
+  }
 };
 
 export default classReducer;

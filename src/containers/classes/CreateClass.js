@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import '../auth/auth.scss';
 import { ReactComponent as AddBtn } from '../../assets/icons/plus-icon.svg';
+import { createClass } from '../../store/actions/classActions';
 
-const CreateClass = () => {
+const CreateClass = (props) => {
   const [title, setTitle] = useState('');
   const [professor, setProfessor] = useState('');
   const [description, setDescription] = useState('');
@@ -11,7 +13,8 @@ const CreateClass = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log({ title, professor, description, books });
+    let course = { title, professor, description, books };
+    props.createClass(course);
   };
 
   const addBook = () => {
@@ -103,4 +106,10 @@ const CreateClass = () => {
   );
 };
 
-export default CreateClass;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createClass: (course) => dispatch(createClass(course)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CreateClass);
