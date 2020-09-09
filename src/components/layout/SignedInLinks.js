@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const SignedInLinks = () => {
   return (
@@ -10,7 +10,7 @@ const SignedInLinks = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/">Logout</NavLink>
+        <Link to="/">Logout</Link>
       </li>
       <li>
         <NavLink to="/user" className="thumbnail">
