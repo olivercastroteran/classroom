@@ -9,7 +9,7 @@ import { ReactComponent as DeleteBtn } from '../../assets/icons/delete-icon.svg'
 
 const ClassDetails = (props) => {
   const { course } = props;
-  console.log(course);
+  //console.log(course);
 
   if (course) {
     return (
