@@ -37,6 +37,6 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-  firestoreConnect(() => ['classes']),
+  firestoreConnect(['classes']),
   connect(mapStateToProps)
 )(Dashboard);

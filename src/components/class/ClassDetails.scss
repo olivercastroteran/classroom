@@ -37,6 +37,10 @@
     position: relative;
   }
 
+  &__books {
+    min-height: 9rem;
+  }
+
   &__books .img-container {
     position: absolute;
     bottom: 1rem;

@@ -18,6 +18,10 @@
       grid-gap: 2rem;
       align-items: center;
 
+      a {
+        text-decoration: none;
+      }
+
       .card {
         cursor: pointer;
         width: 100%;
