@@ -4,7 +4,9 @@ import './Dashboard.scss';
 import Notifications from './Notifications';
 import ClassesList from '../classes/ClassesList';
 import AddBtn from '../../assets/icons/plus-icon.svg';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 class Dashboard extends Component {
   state = {};
@@ -28,9 +30,13 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    classes: state.class.classes,
+    classes: state.firestore.ordered.classes,
   };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+export default compose(
+  firestoreConnect(['classes']),
+  connect(mapStateToProps)
+)(Dashboard);
