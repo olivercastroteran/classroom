@@ -8,12 +8,11 @@ const SignUp = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [isProfessor, setIsProfessor] = useState(false);
-  const [isStudent, setIsStudent] = useState(false);
+  const [isStudent, setIsStudent] = useState(true);
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    checkValidation();
 
     const user = {
       email,
@@ -24,16 +23,32 @@ const SignUp = (props) => {
       isProfessor,
       isStudent,
     };
+
     console.log(user);
   };
 
   const checkValidation = () => {
-    console.log('valid');
+    if (isStudent) {
+      setFormIsValid(true);
+    }
+    if (isProfessor) {
+      if (code === 'xZ6f24K') {
+        setFormIsValid(true);
+      }
+    }
   };
 
   return (
     <div className="form-container">
-      <form autoComplete="off">
+      <form
+        onSubmit={submitHandler}
+        autoComplete="off"
+        onKeyPress={(event) => {
+          if (event.which === 13) {
+            event.preventDefault();
+          }
+        }}
+      >
         <h5>Sign Up</h5>
 
         <div className="user">
@@ -65,7 +80,10 @@ const SignUp = (props) => {
             placeholder="First Name"
             id="firstName"
             autoComplete="off"
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) => {
+              setFirstName(e.target.value);
+              checkValidation();
+            }}
             required
           />
           <label htmlFor="firstName">First Name</label>
@@ -77,7 +95,10 @@ const SignUp = (props) => {
             placeholder="Last Name"
             id="lastName"
             autoComplete="off"
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => {
+              setLastName(e.target.value);
+              checkValidation();
+            }}
             required
           />
           <label htmlFor="lastName">Last Name</label>
@@ -89,7 +110,10 @@ const SignUp = (props) => {
             placeholder="Email"
             id="email"
             autoComplete="off"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              checkValidation();
+            }}
             required
           />
           <label htmlFor="email">Email</label>
@@ -101,7 +125,10 @@ const SignUp = (props) => {
             type="password"
             placeholder="Password"
             id="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              checkValidation();
+            }}
             required
           />
           <label htmlFor="password">Password</label>
@@ -112,17 +139,20 @@ const SignUp = (props) => {
             <input
               autoComplete="off"
               type="password"
-              placeholder="Professor Code (xZy6f24KO)"
+              placeholder="Professor Code (xZ6f24KO)"
               id="code"
-              onChange={(e) => setCode(e.target.value)}
+              onChange={(e) => {
+                checkValidation();
+                setCode(e.target.value);
+              }}
               required
             />
-            <label htmlFor="password">Professor Code (xZy6f24KO)</label>
+            <label htmlFor="password">Professor Code (xZ6f24KO)</label>
           </div>
         ) : null}
 
         <div className="input-field">
-          <button onClick={submitHandler} className="btn">
+          <button className="btn" disabled={!formIsValid}>
             Sign Up
           </button>
         </div>
