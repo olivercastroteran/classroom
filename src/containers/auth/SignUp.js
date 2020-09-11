@@ -28,24 +28,25 @@ const SignUp = (props) => {
   };
 
   const checkValidation = useCallback(() => {
-    if (isStudent && firstName && lastName && email && password.length > 4) {
+    if (isStudent && firstName && lastName && email && password.length > 3) {
       setFormIsValid(true);
-    }
-    if (
+    } else if (
       isProfessor &&
       firstName &&
       lastName &&
       email &&
-      password.length > 4 &&
+      password.length > 3 &&
       code === 'xZ6f24K'
     ) {
       setFormIsValid(true);
+    } else {
+      setFormIsValid(false);
     }
   }, [firstName, lastName, email, password, code, isProfessor, isStudent]);
 
   useEffect(() => {
     checkValidation();
-  }, [code, password, checkValidation]);
+  }, [checkValidation]);
 
   return (
     <div className="form-container">
