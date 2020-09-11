@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './auth.scss';
 
 const SignUp = (props) => {
@@ -27,16 +27,25 @@ const SignUp = (props) => {
     console.log(user);
   };
 
-  const checkValidation = () => {
-    if (isStudent) {
+  const checkValidation = useCallback(() => {
+    if (isStudent && firstName && lastName && email && password.length > 4) {
       setFormIsValid(true);
     }
-    if (isProfessor) {
-      if (code === 'xZ6f24K') {
-        setFormIsValid(true);
-      }
+    if (
+      isProfessor &&
+      firstName &&
+      lastName &&
+      email &&
+      password.length > 4 &&
+      code === 'xZ6f24K'
+    ) {
+      setFormIsValid(true);
     }
-  };
+  }, [firstName, lastName, email, password, code, isProfessor, isStudent]);
+
+  useEffect(() => {
+    checkValidation();
+  }, [code, password, checkValidation]);
 
   return (
     <div className="form-container">
@@ -56,6 +65,7 @@ const SignUp = (props) => {
             type="button"
             className={`left-btn ${isStudent ? 'active' : ''}`}
             onClick={(e) => {
+              setFormIsValid(false);
               setIsProfessor(false);
               setIsStudent(!isStudent);
             }}
@@ -66,6 +76,7 @@ const SignUp = (props) => {
             type="button"
             className={`right-btn ${isProfessor ? 'active' : ''}`}
             onClick={(e) => {
+              setFormIsValid(false);
               setIsStudent(false);
               setIsProfessor(!isProfessor);
             }}
@@ -81,8 +92,8 @@ const SignUp = (props) => {
             id="firstName"
             autoComplete="off"
             onChange={(e) => {
-              setFirstName(e.target.value);
               checkValidation();
+              setFirstName(e.target.value);
             }}
             required
           />
@@ -96,8 +107,8 @@ const SignUp = (props) => {
             id="lastName"
             autoComplete="off"
             onChange={(e) => {
-              setLastName(e.target.value);
               checkValidation();
+              setLastName(e.target.value);
             }}
             required
           />
@@ -111,8 +122,8 @@ const SignUp = (props) => {
             id="email"
             autoComplete="off"
             onChange={(e) => {
-              setEmail(e.target.value);
               checkValidation();
+              setEmail(e.target.value);
             }}
             required
           />
@@ -126,8 +137,8 @@ const SignUp = (props) => {
             placeholder="Password"
             id="password"
             onChange={(e) => {
-              setPassword(e.target.value);
               checkValidation();
+              setPassword(e.target.value);
             }}
             required
           />
@@ -139,7 +150,7 @@ const SignUp = (props) => {
             <input
               autoComplete="off"
               type="password"
-              placeholder="Professor Code (xZ6f24KO)"
+              placeholder="Professor Code (xZ6f24K)"
               id="code"
               onChange={(e) => {
                 checkValidation();
@@ -147,7 +158,7 @@ const SignUp = (props) => {
               }}
               required
             />
-            <label htmlFor="password">Professor Code (xZ6f24KO)</label>
+            <label htmlFor="password">Professor Code (xZ6f24K)</label>
           </div>
         ) : null}
 
