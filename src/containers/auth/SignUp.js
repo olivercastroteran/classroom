@@ -28,14 +28,14 @@ const SignUp = (props) => {
   };
 
   const checkValidation = useCallback(() => {
-    if (isStudent && firstName && lastName && email && password.length > 3) {
+    if (isStudent && firstName && lastName && email && password.length > 5) {
       setFormIsValid(true);
     } else if (
       isProfessor &&
       firstName &&
       lastName &&
       email &&
-      password.length > 3 &&
+      password.length > 5 &&
       code === 'xZ6f24K'
     ) {
       setFormIsValid(true);

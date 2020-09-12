@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './auth.scss';
+import { connect } from 'react-redux';
+import { login } from '../../store/actions/authActions';
 
 class LogIn extends Component {
   state = {
@@ -9,7 +11,7 @@ class LogIn extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.login(this.state);
   };
 
   changeHandler = (e) => {
@@ -17,6 +19,7 @@ class LogIn extends Component {
   };
 
   render() {
+    const { authError } = this.props;
     return (
       <div className="form-container">
         <form onSubmit={this.submitHandler} autoComplete="off">
@@ -45,6 +48,9 @@ class LogIn extends Component {
           </div>
           <div className="input-field">
             <button className="btn">Login</button>
+            <div className="error-msg">
+              {authError ? <p>{authError}</p> : null}
+            </div>
           </div>
         </form>
       </div>
@@ -52,4 +58,16 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (creds) => dispatch(login(creds)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
