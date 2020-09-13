@@ -51,6 +51,7 @@ const SignUp = (props) => {
   return (
     <div className="form-container">
       <form
+        className="signup"
         onSubmit={submitHandler}
         autoComplete="off"
         onKeyPress={(event) => {
