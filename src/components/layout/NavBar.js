@@ -6,25 +6,26 @@ import ClassroomLogo from '../../assets/images/classroom-logo.svg';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 
-const NavBar = () => {
+const NavBar = (props) => {
+  const { auth } = props;
+  //console.log(auth);
+  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
   return (
     <nav className="navbar">
       <div className="navbar__container">
         <Link to="/" className="logo">
           <img src={ClassroomLogo} alt="classroom logo" />
         </Link>
-        <div className="links">
-          <SignedOutLinks />
-          <SignedInLinks />
-        </div>
+        <div className="links">{links}</div>
       </div>
     </nav>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  return {};
+  return {
+    auth: state.firebase.auth,
+  };
 };
 
 export default connect(mapStateToProps)(NavBar);
