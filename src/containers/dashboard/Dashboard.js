@@ -7,12 +7,13 @@ import AddBtn from '../../assets/icons/plus-icon.svg';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
-  state = {};
   render() {
     //console.log(this.props);
-    const { classes } = this.props;
+    const { classes, auth } = this.props;
+    if (!auth.uid) return <Redirect to="/login" />;
     return (
       <div className="dashboard">
         <div className="classes-list">
@@ -33,6 +34,7 @@ const mapStateToProps = (state) => {
   //console.log(state);
   return {
     classes: state.firestore.ordered.classes,
+    auth: state.firebase.auth,
   };
 };
 

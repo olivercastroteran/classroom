@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './auth.scss';
 import { connect } from 'react-redux';
 import { login } from '../../store/actions/authActions';
+import { Redirect } from 'react-router-dom';
 
 class LogIn extends Component {
   state = {
@@ -12,7 +13,6 @@ class LogIn extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     this.props.login(this.state);
-    //this.props.history.push('/');
   };
 
   changeHandler = (e) => {
@@ -20,7 +20,8 @@ class LogIn extends Component {
   };
 
   render() {
-    const { authError } = this.props;
+    const { authError, auth } = this.props;
+    if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="form-container">
         <form onSubmit={this.submitHandler} autoComplete="off">
@@ -62,6 +63,7 @@ class LogIn extends Component {
 const mapStateToProps = (state) => {
   return {
     authError: state.auth.authError,
+    auth: state.firebase.auth,
   };
 };
 

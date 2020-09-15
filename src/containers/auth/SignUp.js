@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './auth.scss';
 
 const SignUp = (props) => {
@@ -48,8 +50,13 @@ const SignUp = (props) => {
     checkValidation();
   }, [checkValidation]);
 
+  const redirectUser = () => {
+    if (props.auth.uid) return <Redirect to="/" />;
+  };
+
   return (
     <div className="form-container">
+      {redirectUser()}
       <form
         className="signup"
         onSubmit={submitHandler}
@@ -174,4 +181,10 @@ const SignUp = (props) => {
   );
 };
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
+export default connect(mapStateToProps)(SignUp);
