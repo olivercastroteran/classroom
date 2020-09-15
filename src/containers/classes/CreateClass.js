@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import '../auth/auth.scss';
 import { ReactComponent as AddBtn } from '../../assets/icons/plus-icon.svg';
 import { createClass } from '../../store/actions/classActions';
+import { Redirect } from 'react-router-dom';
 
 const CreateClass = (props) => {
   const [title, setTitle] = useState('');
@@ -10,6 +11,8 @@ const CreateClass = (props) => {
   const [description, setDescription] = useState('');
   const [book, setBook] = useState('');
   const [books, setBooks] = useState([]);
+
+  if (!props.auth.uid) return <Redirect to="/login" />;
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -106,10 +109,16 @@ const CreateClass = (props) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     createClass: (course) => dispatch(createClass(course)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(CreateClass);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateClass);

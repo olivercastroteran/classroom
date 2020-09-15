@@ -6,10 +6,12 @@ import './ClassDetails.scss';
 import Books from '../../assets/images/books.svg';
 import { ReactComponent as EditBtn } from '../../assets/icons/edit-icon.svg';
 import { ReactComponent as DeleteBtn } from '../../assets/icons/delete-icon.svg';
+import { Redirect } from 'react-router-dom';
 
 const ClassDetails = (props) => {
-  const { course } = props;
-  console.log(course);
+  const { course, auth } = props;
+  //console.log(course);
+  if (!auth.uid) return <Redirect to="/login" />;
 
   if (course) {
     return (
@@ -54,6 +56,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     course: course,
+    auth: state.firebase.auth,
   };
 };
 
