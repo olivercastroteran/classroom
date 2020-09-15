@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './auth.scss';
+import { signUp } from '../../store/actions/authActions';
 
 const SignUp = (props) => {
   const [email, setEmail] = useState('');
@@ -27,6 +28,7 @@ const SignUp = (props) => {
     };
 
     console.log(user);
+    props.signUp(user);
   };
 
   const checkValidation = useCallback(() => {
@@ -51,7 +53,8 @@ const SignUp = (props) => {
   }, [checkValidation]);
 
   const redirectUser = () => {
-    if (props.auth.uid) return <Redirect to="/" />;
+    const { auth } = props;
+    if (auth.uid) return <Redirect to="/" />;
   };
 
   return (
@@ -175,6 +178,9 @@ const SignUp = (props) => {
           <button className="btn" disabled={!formIsValid}>
             Sign Up
           </button>
+          <div className="error-msg">
+            {props.authError ? <p>{props.authError}</p> : null}
+          </div>
         </div>
       </form>
     </div>
@@ -184,7 +190,14 @@ const SignUp = (props) => {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
+    authError: state.auth.authError,
   };
 };
 
-export default connect(mapStateToProps)(SignUp);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
