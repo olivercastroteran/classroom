@@ -12,6 +12,7 @@ class LogIn extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     this.props.login(this.state);
+    //this.props.history.push('/');
   };
 
   changeHandler = (e) => {
