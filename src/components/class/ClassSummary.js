@@ -5,7 +5,9 @@ const ClassSummary = ({ course }) => {
     <div className="card">
       <div className="card__header">
         <p className="class-title">{course.title}</p>
-        <p className="professor">Oliver Castro Teran</p>
+        <p className="professor">
+          {course.professorFirstName} {course.professorLastName}
+        </p>
       </div>
       <div className="card__body">
         <p className="class-summary">{course.description}</p>
