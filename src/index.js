@@ -13,6 +13,7 @@ import {
 import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
 import fbConfig from './config/fbConfig';
 import firebase from 'firebase/app';
+// To render on auth ready
 import { useSelector } from 'react-redux';
 import { isLoaded } from 'react-redux-firebase';
 
@@ -24,14 +25,17 @@ const store = createStore(
   )
 );
 
+//construct required properties
+const profileSpecificProps = {
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+};
+
 const rrfProps = {
   firebase,
-  config: fbConfig,
+  config: profileSpecificProps,
   dispatch: store.dispatch,
   createFirestoreInstance,
-  userProfile: 'users', // where profiles are stored in database
-  presence: 'presence', // where list of online users is stored in database
-  sessions: 'sessions',
 };
 
 function AuthIsLoaded({ children }) {

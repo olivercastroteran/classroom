@@ -18,7 +18,7 @@ const SignedInLinks = (props) => {
       </li>
       <li>
         <NavLink to="/user" className="thumbnail">
-          OC
+          {props.profile.initials}
         </NavLink>
       </li>
     </ul>
