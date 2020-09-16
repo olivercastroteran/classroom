@@ -13,7 +13,7 @@ const ClassSummary = ({ course }) => {
         <p className="class-summary">{course.description}</p>
       </div>
       <div className="card__date">
-        <p>07/09/2020</p>
+        <p>{course.createdAt.slice(0, 15)}</p>
       </div>
     </div>
   );

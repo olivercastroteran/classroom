@@ -12,7 +12,7 @@ export const createClass = (course) => {
         professorFirstName: profile.firstName,
         professorLastName: profile.lastName,
         userId: uid,
-        createdAt: new Date(),
+        createdAt: new Date().toString(),
       })
       .then(() => {
         dispatch({ type: 'CREATE_CLASS', class: course });
