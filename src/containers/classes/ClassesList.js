@@ -7,7 +7,7 @@ const ClassesList = ({ classes }) => {
     <div className="classes-list__container">
       {classes &&
         classes.map((course) => (
-          <Link key={course.id} to={`/class/${course.id}`}>
+          <Link key={course.id} to={`/classes/${course.id}`}>
             <ClassSummary course={course} />
           </Link>
         ))}

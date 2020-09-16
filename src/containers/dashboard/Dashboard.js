@@ -12,7 +12,7 @@ import { Redirect } from 'react-router-dom';
 class Dashboard extends Component {
   render() {
     //console.log(this.props);
-    const { classes, auth } = this.props;
+    const { classes, auth, isProfessor } = this.props;
     if (!auth.uid) return <Redirect to="/login" />;
     return (
       <div className="dashboard">
@@ -22,9 +22,11 @@ class Dashboard extends Component {
         <div className="notifications">
           <Notifications />
         </div>
-        <Link to="/create" className="add-btn">
-          <img className="add-icon" src={AddBtn} alt="add class btn" />
-        </Link>
+        {isProfessor ? (
+          <Link to="/create" className="add-btn">
+            <img className="add-icon" src={AddBtn} alt="add class btn" />
+          </Link>
+        ) : null}
       </div>
     );
   }
@@ -35,6 +37,7 @@ const mapStateToProps = (state) => {
   return {
     classes: state.firestore.ordered.classes,
     auth: state.firebase.auth,
+    isProfessor: state.firebase.profile.isProfessor,
   };
 };
 

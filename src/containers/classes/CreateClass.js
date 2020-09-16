@@ -18,6 +18,7 @@ const CreateClass = (props) => {
     e.preventDefault();
     let course = { title, professor, description, books };
     props.createClass(course);
+    props.history.push('/');
   };
 
   const addBook = () => {

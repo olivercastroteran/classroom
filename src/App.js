@@ -7,6 +7,7 @@ import ClassDetails from './components/class/ClassDetails';
 import LogIn from './containers/auth/LogIn';
 import SignUp from './containers/auth/SignUp';
 import CreateClass from './containers/classes/CreateClass';
+import User from './components/user/User';
 
 function App() {
   return (
@@ -15,10 +16,11 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route path="/class/:id" component={ClassDetails} />
+          <Route path="/classes/:id" component={ClassDetails} />
           <Route path="/login" component={LogIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/create" component={CreateClass} />
+          <Route path="/user" component={User} />
         </Switch>
       </div>
     </BrowserRouter>

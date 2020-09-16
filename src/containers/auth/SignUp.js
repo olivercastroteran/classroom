@@ -72,7 +72,7 @@ const SignUp = (props) => {
       >
         <h5>Sign Up</h5>
 
-        <div className="user">
+        <div className="user-status">
           <button
             type="button"
             className={`left-btn ${isStudent ? 'active' : ''}`}
