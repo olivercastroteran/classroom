@@ -34,10 +34,12 @@ const ClassDetails = (props) => {
             <img src={Books} alt="books img" />
           </div>
         </div>
-        <div className="class-details__edit">
-          <DeleteBtn className="delete-btn" fill="red" />
-          <EditBtn className="edit-btn" />
-        </div>
+        {course.userId === auth.uid ? (
+          <div className="class-details__edit">
+            <DeleteBtn className="delete-btn" fill="red" />
+            <EditBtn className="edit-btn" />
+          </div>
+        ) : null}
       </div>
     );
   } else {
