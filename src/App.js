@@ -16,7 +16,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route path="/class/:id" component={ClassDetails} />
+          <Route path="/classes/:id" component={ClassDetails} />
           <Route path="/login" component={LogIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/create" component={CreateClass} />
