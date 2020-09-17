@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Notifications = () => {
+const Notifications = (props) => {
   return (
     <div className="notifications__container">
       <p className="notifications__container--title">Notifications</p>
