@@ -12,7 +12,7 @@ import { Redirect } from 'react-router-dom';
 class Dashboard extends Component {
   render() {
     //console.log(this.props);
-    const { classes, auth, isProfessor } = this.props;
+    const { classes, auth, isProfessor, notifications } = this.props;
     if (!auth.uid) return <Redirect to="/login" />;
     return (
       <div className="dashboard">
@@ -20,7 +20,7 @@ class Dashboard extends Component {
           <ClassesList classes={classes} />
         </div>
         <div className="notifications">
-          <Notifications />
+          <Notifications notifications={notifications} />
         </div>
         {isProfessor ? (
           <Link to="/create" className="add-btn">
@@ -38,10 +38,14 @@ const mapStateToProps = (state) => {
     classes: state.firestore.ordered.classes,
     auth: state.firebase.auth,
     isProfessor: state.firebase.profile.isProfessor,
+    notifications: state.firestore.ordered.notifications,
   };
 };
 
 export default compose(
-  firestoreConnect(['classes']),
+  firestoreConnect([
+    { collection: 'classes' },
+    { collection: 'notifications', limit: 4, orderBy: ['time', 'desc'] },
+  ]),
   connect(mapStateToProps)
 )(Dashboard);
