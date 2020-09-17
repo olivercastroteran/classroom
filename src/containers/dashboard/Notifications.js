@@ -1,27 +1,22 @@
 import React from 'react';
+import moment from 'moment';
 
 const Notifications = (props) => {
+  const { notifications } = props;
   return (
     <div className="notifications__container">
       <p className="notifications__container--title">Notifications</p>
 
-      <div className="notification">
-        <p>Oliver Castro T</p>
-        <p>Created a New Class</p>
-        <span>2 days ago</span>
-      </div>
-
-      <div className="notification">
-        <p>Oliver Castro T</p>
-        <p>Created a New Class</p>
-        <span>2 days ago</span>
-      </div>
-
-      <div className="notification">
-        <p>Oliver Castro T</p>
-        <p>Created a New Class</p>
-        <span>2 days ago</span>
-      </div>
+      {notifications &&
+        notifications.map((notification) => {
+          return (
+            <div key={notification.id} className="notification">
+              <p>{notification.user}</p>
+              <p>{notification.content}</p>
+              <span>{moment(notification.time.toDate()).fromNow()}</span>
+            </div>
+          );
+        })}
     </div>
   );
 };
