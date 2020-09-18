@@ -22,3 +22,9 @@ export const createClass = (course) => {
       });
   };
 };
+
+export const deleteClass = (classId) => {
+  // return (dispatch, getState, { getFirebase, getFirestore }) => {
+  //   const firestore = getFirestore();
+  // };
+};
