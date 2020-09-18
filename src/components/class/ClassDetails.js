@@ -56,7 +56,10 @@ const ClassDetails = (props) => {
             ></div>
             <DeleteModal
               title={course.title}
-              deleteCourse={() => props.deleteCourse(props.courseId)}
+              deleteCourse={() => {
+                props.deleteCourse(props.courseId);
+                props.history.push('/');
+              }}
             />
           </>
         ) : null}

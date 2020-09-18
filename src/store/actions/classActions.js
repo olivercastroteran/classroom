@@ -24,7 +24,18 @@ export const createClass = (course) => {
 };
 
 export const deleteClass = (classId) => {
-  // return (dispatch, getState, { getFirebase, getFirestore }) => {
-  //   const firestore = getFirestore();
-  // };
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+
+    firestore
+      .collection('classes')
+      .doc(classId)
+      .delete()
+      .then(() => {
+        dispatch({ type: 'DELETE_CLASS' });
+      })
+      .catch((err) => {
+        dispatch({ type: 'DELETE_CLASS_ERROR', err });
+      });
+  };
 };
