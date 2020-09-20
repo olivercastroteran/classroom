@@ -39,3 +39,20 @@ export const deleteClass = (classId) => {
       });
   };
 };
+
+export const editClass = (classId, newData) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+
+    // firestore
+    //   .collection('classes')
+    //   .doc(classId)
+    //   .delete()
+    //   .then(() => {
+    //     dispatch({ type: 'DELETE_CLASS' });
+    //   })
+    //   .catch((err) => {
+    //     dispatch({ type: 'DELETE_CLASS_ERROR', err });
+    //   });
+  };
+};

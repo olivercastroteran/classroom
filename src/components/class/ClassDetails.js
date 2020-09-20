@@ -8,10 +8,12 @@ import { ReactComponent as EditBtn } from '../../assets/icons/edit-icon.svg';
 import { ReactComponent as DeleteBtn } from '../../assets/icons/delete-icon.svg';
 import { Redirect } from 'react-router-dom';
 import DeleteModal from '../layout/DeleteModal';
-import { deleteClass } from '../../store/actions/classActions';
+import EditModal from '../layout/EditModal';
+import { deleteClass, editClass } from '../../store/actions/classActions';
 
 const ClassDetails = (props) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
 
   const { course, auth } = props;
   //console.log(course);
@@ -45,7 +47,10 @@ const ClassDetails = (props) => {
               className="delete-btn"
               fill="red"
             />
-            <EditBtn className="edit-btn" />
+            <EditBtn
+              onClick={() => setIsEditOpen(!isEditOpen)}
+              className="edit-btn"
+            />
           </div>
         ) : null}
         {isDeleteOpen ? (
@@ -59,6 +64,21 @@ const ClassDetails = (props) => {
               deleteCourse={() => {
                 props.deleteCourse(props.courseId);
                 props.history.push('/');
+              }}
+            />
+          </>
+        ) : null}
+        {isEditOpen ? (
+          <>
+            <div
+              onClick={() => setIsEditOpen(false)}
+              className="backdrop"
+            ></div>
+            <EditModal
+              course={course}
+              editCourse={() => {
+                console.log(course);
+                props.editCourse(props.courseId);
               }}
             />
           </>
@@ -89,6 +109,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteCourse: (courseId) => dispatch(deleteClass(courseId)),
+    editCourse: (courseId, newData) => dispatch(editClass(courseId, newData)),
   };
 };
 

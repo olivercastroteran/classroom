@@ -27,21 +27,40 @@
     color: #555;
   }
 
-  button {
+  .delete-button,
+  .edit-button {
     cursor: pointer;
     margin-top: 2rem;
     font-size: 1.1rem;
-    color: #c0392b;
     background-color: transparent;
     padding: 0.5rem 1rem;
-    border: 1px solid #c0392b;
     border-radius: 0.5rem;
     outline: none;
     transition: all 0.3s;
+  }
+
+  .delete-button {
+    color: #c0392b;
+    border: 1px solid #c0392b;
 
     &:hover {
       transform: scale(1.05);
       background-color: #c0392b;
+      color: #fff;
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+
+  .edit-button {
+    color: #2e6947;
+    border: 1px solid #2e6947;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: #2e6947;
       color: #fff;
     }
 
