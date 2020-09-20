@@ -9,7 +9,7 @@ import { ReactComponent as DeleteBtn } from '../../assets/icons/delete-icon.svg'
 import { Redirect } from 'react-router-dom';
 import DeleteModal from '../layout/DeleteModal';
 import EditModal from '../layout/EditModal';
-import { deleteClass, editClass } from '../../store/actions/classActions';
+import { deleteClass } from '../../store/actions/classActions';
 
 const ClassDetails = (props) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -76,10 +76,8 @@ const ClassDetails = (props) => {
             ></div>
             <EditModal
               course={course}
-              editCourse={() => {
-                console.log(course);
-                props.editCourse(props.courseId);
-              }}
+              courseId={props.courseId}
+              closeEditModal={() => setIsEditOpen(false)}
             />
           </>
         ) : null}
@@ -109,7 +107,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteCourse: (courseId) => dispatch(deleteClass(courseId)),
-    editCourse: (courseId, newData) => dispatch(editClass(courseId, newData)),
   };
 };
 

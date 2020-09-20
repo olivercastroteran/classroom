@@ -40,19 +40,21 @@ export const deleteClass = (classId) => {
   };
 };
 
-export const editClass = (classId, newData) => {
+export const editClass = (updatedCourse) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
-    // firestore
-    //   .collection('classes')
-    //   .doc(classId)
-    //   .delete()
-    //   .then(() => {
-    //     dispatch({ type: 'DELETE_CLASS' });
-    //   })
-    //   .catch((err) => {
-    //     dispatch({ type: 'DELETE_CLASS_ERROR', err });
-    //   });
+    firestore
+      .collection('classes')
+      .doc(updatedCourse.courseId)
+      .update({
+        ...updatedCourse,
+      })
+      .then(() => {
+        dispatch({ type: 'UPDATED_CLASS' });
+      })
+      .catch((err) => {
+        dispatch({ type: 'UPDATED_CLASS_ERROR', err });
+      });
   };
 };

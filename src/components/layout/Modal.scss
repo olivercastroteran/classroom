@@ -14,23 +14,30 @@
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 1rem;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+
+  label,
+  li {
+    text-align: left;
+  }
 
   h3 {
-    color: #555;
+    color: #777;
+
+    span {
+      color: #444;
+    }
   }
 
   .delete-button,
   .edit-button {
     cursor: pointer;
-    margin-top: 2rem;
+    margin-top: 1rem;
     font-size: 1.1rem;
     background-color: transparent;
     padding: 0.5rem 1rem;
