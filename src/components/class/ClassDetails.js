@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -7,8 +7,14 @@ import Books from '../../assets/images/books.svg';
 import { ReactComponent as EditBtn } from '../../assets/icons/edit-icon.svg';
 import { ReactComponent as DeleteBtn } from '../../assets/icons/delete-icon.svg';
 import { Redirect } from 'react-router-dom';
+import DeleteModal from '../layout/DeleteModal';
+import EditModal from '../layout/EditModal';
+import { deleteClass } from '../../store/actions/classActions';
 
 const ClassDetails = (props) => {
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+
   const { course, auth } = props;
   //console.log(course);
   if (!auth.uid) return <Redirect to="/login" />;
@@ -36,9 +42,44 @@ const ClassDetails = (props) => {
         </div>
         {course.userId === auth.uid ? (
           <div className="class-details__edit">
-            <DeleteBtn className="delete-btn" fill="red" />
-            <EditBtn className="edit-btn" />
+            <DeleteBtn
+              onClick={() => setIsDeleteOpen(!isDeleteOpen)}
+              className="delete-btn"
+              fill="red"
+            />
+            <EditBtn
+              onClick={() => setIsEditOpen(!isEditOpen)}
+              className="edit-btn"
+            />
           </div>
+        ) : null}
+        {isDeleteOpen ? (
+          <>
+            <div
+              onClick={() => setIsDeleteOpen(false)}
+              className="backdrop"
+            ></div>
+            <DeleteModal
+              title={course.title}
+              deleteCourse={() => {
+                props.deleteCourse(props.courseId);
+                props.history.push('/');
+              }}
+            />
+          </>
+        ) : null}
+        {isEditOpen ? (
+          <>
+            <div
+              onClick={() => setIsEditOpen(false)}
+              className="backdrop"
+            ></div>
+            <EditModal
+              course={course}
+              courseId={props.courseId}
+              closeEditModal={() => setIsEditOpen(false)}
+            />
+          </>
         ) : null}
       </div>
     );
@@ -59,10 +100,17 @@ const mapStateToProps = (state, ownProps) => {
   return {
     course: course,
     auth: state.firebase.auth,
+    courseId: ownProps.match.params.id,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteCourse: (courseId) => dispatch(deleteClass(courseId)),
   };
 };
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect(['classes'])
 )(ClassDetails);

@@ -35,6 +35,18 @@ const classReducer = (state = initState, action) => {
     case 'CREATE_CLASS_ERROR':
       console.log('created class error', action.err);
       return state;
+    case 'DELETE_CLASS':
+      console.log('deletedd class');
+      return state;
+    case 'DELETE_CLASS_ERROR':
+      console.log('deletedd class error', action.err);
+      return state;
+    case 'UPDATED_CLASS':
+      console.log('updated class');
+      return state;
+    case 'UPDATED_CLASS_ERROR':
+      console.log('updated class error', action.err);
+      return state;
     default:
       return state;
   }

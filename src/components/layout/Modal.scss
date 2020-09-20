@@ -1,0 +1,78 @@
+.backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  max-width: 500px;
+  width: 50%;
+  background-color: #fff;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  label,
+  li {
+    text-align: left;
+  }
+
+  h3 {
+    color: #777;
+
+    span {
+      color: #444;
+    }
+  }
+
+  .delete-button,
+  .edit-button {
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: all 0.3s;
+  }
+
+  .delete-button {
+    color: #c0392b;
+    border: 1px solid #c0392b;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: #c0392b;
+      color: #fff;
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+
+  .edit-button {
+    color: #2e6947;
+    border: 1px solid #2e6947;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: #2e6947;
+      color: #fff;
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+}
