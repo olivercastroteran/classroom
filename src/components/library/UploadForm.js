@@ -11,7 +11,7 @@ const UploadForm = () => {
     if (selected && selected.type === 'application/pdf') {
       setFile(selected);
       setError('');
-      console.log(selected);
+      //console.log(selected);
     } else {
       setFile(null);
       setError('Please select a PDF document');
@@ -27,7 +27,13 @@ const UploadForm = () => {
       <div className="output">
         {error && <div className="error">{error}</div>}
         {file && <div>{file.name}</div>}
-        {file && <ProgressBar file={file} setFile={setFile} />}
+        {file && (
+          <ProgressBar
+            file={file}
+            setFile={setFile}
+            name={file.name.slice(0, -4)}
+          />
+        )}
       </div>
     </form>
   );

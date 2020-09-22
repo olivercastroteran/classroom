@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import useStorage from '../../hooks/useStorage';
 
-const ProgressBar = ({ file, setFile }) => {
+const ProgressBar = ({ file, setFile, name }) => {
   const { url, progress } = useStorage(file);
-  console.log(progress, url);
+  //console.log(progress, url, name);
 
   useEffect(() => {
     if (url) {
@@ -12,10 +12,10 @@ const ProgressBar = ({ file, setFile }) => {
   }, [url, setFile]);
 
   return (
-    <>
+    <React.Fragment>
       <div className="progress-bar" style={{ width: progress + '%' }}></div>
-      <span className="bar-percentage">{progress.toFixed(0)} %</span>
-    </>
+      <p className="bar-percentage">{progress.toFixed(0)} %</p>
+    </React.Fragment>
   );
 };
 

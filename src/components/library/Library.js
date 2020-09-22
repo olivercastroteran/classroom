@@ -3,6 +3,7 @@ import './Library.scss';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import UploadForm from './UploadForm';
+import DocsGrid from './DocsGrid';
 
 const Library = (props) => {
   const { auth, isProfessor } = props;
@@ -16,6 +17,7 @@ const Library = (props) => {
         <p>Welcome student download as many books as you need</p>
       )}
       {isProfessor ? <UploadForm /> : null}
+      <DocsGrid />
     </div>
   );
 };
