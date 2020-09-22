@@ -4,6 +4,11 @@
   background-color: #2a3f59;
   padding: 0.5rem 1rem;
 
+  @media only screen and (max-width: 1200px) {
+    min-height: 68px;
+    max-width: 1200px;
+  }
+
   &__container {
     max-width: 1150px;
     width: 90%;
@@ -17,6 +22,16 @@
       height: 100%;
       width: auto;
 
+      @media only screen and (max-width: 1200px) {
+        width: 250px;
+        height: auto;
+      }
+
+      @media only screen and (max-width: 7680px) {
+        width: 200px;
+        height: auto;
+      }
+
       img {
         height: 100%;
         width: 100%;
@@ -28,6 +43,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      @media only screen and (max-width: 1000px) {
+        width: 40%;
+      }
+
+      @media only screen and (max-width: 900px) {
+        width: 50%;
+      }
 
       .signedOut {
         width: 100%;
@@ -47,6 +70,10 @@
         color: #aaa;
         text-decoration: none;
         transition: all 0.3s ease;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 20px;
+        }
 
         &.active {
           color: #fff;
