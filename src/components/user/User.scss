@@ -11,6 +11,10 @@
   border-radius: 1rem;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
 
+  @media only screen and (orientation: landscape) and (max-width: 768px) {
+    margin-top: 7rem;
+  }
+
   @media only screen and (max-width: 768px) {
     width: 75%;
   }
@@ -37,6 +41,10 @@
 
     @media only screen and (max-width: 1000px) {
       width: 75%;
+    }
+
+    @media only screen and (max-width: 480px) {
+      font-size: 1rem;
     }
 
     p {

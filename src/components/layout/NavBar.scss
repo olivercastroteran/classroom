@@ -9,6 +9,10 @@
     max-width: 1200px;
   }
 
+  @media only screen and (max-width: 480px) {
+    padding: 0.2rem 0.3rem;
+  }
+
   &__container {
     max-width: 1150px;
     width: 90%;
@@ -27,8 +31,18 @@
         height: auto;
       }
 
-      @media only screen and (max-width: 7680px) {
+      @media only screen and (max-width: 768px) {
         width: 200px;
+        height: auto;
+      }
+
+      @media only screen and (max-width: 600px) {
+        width: 150px;
+        height: auto;
+      }
+
+      @media only screen and (orientation: landscape) and (max-width: 768px) {
+        width: 150px;
         height: auto;
       }
 
@@ -52,6 +66,14 @@
         width: 50%;
       }
 
+      @media only screen and (max-width: 600px) {
+        width: 60%;
+      }
+
+      @media only screen and (orientation: landscape) and (max-width: 768px) {
+        width: 40%;
+      }
+
       .signedOut {
         width: 100%;
         justify-content: flex-end;
@@ -73,6 +95,14 @@
 
         @media only screen and (max-width: 768px) {
           font-size: 20px;
+        }
+
+        @media only screen and (orientation: landscape) and (max-width: 768px) {
+          font-size: 18px;
+        }
+
+        @media only screen and (max-width: 600px) {
+          font-size: 18px;
         }
 
         &.active {

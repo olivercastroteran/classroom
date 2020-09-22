@@ -33,7 +33,7 @@ const CreateClass = (props) => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container create">
       <form onSubmit={submitHandler} autoComplete="off">
         <h5>Create Class</h5>
         <div className="input-field">
