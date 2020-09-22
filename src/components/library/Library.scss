@@ -1,0 +1,120 @@
+.library {
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 90vh;
+  padding: 2rem 1rem;
+
+  p {
+    font-size: 1.1rem;
+    text-align: center;
+    color: #333;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2e6947;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    margin: 30px auto 20px;
+    text-align: center;
+  }
+
+  label input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+  }
+
+  label {
+    cursor: pointer;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #2e6947;
+    border-radius: 50%;
+    margin: 10px auto;
+    line-height: 30px;
+    color: #2e6947;
+    font-weight: bold;
+    font-size: 24px;
+    transition: all 0.3s;
+  }
+
+  label:hover {
+    transform: scale(1.25);
+    background: #2e6947;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    color: white;
+  }
+
+  label:active {
+    transform: scale(1.15);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .output {
+    height: 60px;
+    font-size: 0.8rem;
+  }
+
+  .error {
+    color: #c0392b;
+  }
+
+  .progress-bar {
+    height: 5px;
+    border-radius: 20px;
+    background-color: #2e6947;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .bar-percentage {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #777;
+    margin-bottom: 1rem;
+  }
+
+  .docs-grid {
+    max-width: 1000px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 40px;
+  }
+
+  .doc-wrap {
+    cursor: pointer;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    text-align: center;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #61a87f;
+      transform: scale(1.05);
+      box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
+
+      a {
+        color: #fff;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+  }
+
+  .doc-wrap img {
+    display: block;
+    margin: 0 auto 1rem auto;
+  }
+}

@@ -1,4 +1,5 @@
 import firebase from 'firebase/app';
+import 'firebase/storage';
 import 'firebase/firestore';
 import 'firebase/auth';
 
@@ -13,6 +14,10 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+export const libraryStorage = firebase.storage();
+export const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+export const firestore = firebase.firestore();
 
 //firebase.firestore().settings({ timestampsInSnapshots: true });
 
