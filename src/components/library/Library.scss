@@ -47,7 +47,13 @@
   label:hover {
     transform: scale(1.25);
     background: #2e6947;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     color: white;
+  }
+
+  label:active {
+    transform: scale(1.15);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
   }
 
   .output {
@@ -57,5 +63,19 @@
 
   .error {
     color: #c0392b;
+  }
+
+  .bar-percentage {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #777;
+  }
+
+  .progress-bar {
+    height: 5px;
+    border-radius: 20px;
+    background-color: #2e6947;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
