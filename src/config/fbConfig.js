@@ -16,7 +16,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const libraryStorage = firebase.storage();
-//export const libraryFirestore = firebase.firestore()
+export const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+export const firestore = firebase.firestore();
 
 //firebase.firestore().settings({ timestampsInSnapshots: true });
 

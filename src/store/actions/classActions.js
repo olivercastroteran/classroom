@@ -58,3 +58,19 @@ export const editClass = (updatedCourse) => {
       });
   };
 };
+
+// export const uploadBook = (bookData) => {
+//   return (dispatch, getState, { getFirebase, getFirestore }) => {
+//     const firestore = getFirestore();
+
+//     firestore
+//       .collection('library')
+//       .add(bookData)
+//       .then(() => {
+//         dispatch({ type: 'UPLOAD_SUCCESS' });
+//       })
+//       .catch((err) => {
+//         dispatch({ type: 'UPLOAD_ERROR' });
+//       });
+//   };
+// };
