@@ -3,12 +3,17 @@
   width: 90%;
   min-height: calc(90vh - 4rem);
   margin: 2rem auto;
+  margin-top: calc(10vh + 20px);
   display: flex;
   justify-content: space-between;
   position: relative;
 
   @media only screen and (orientation: landscape) and (max-width: 768px) {
     width: 100%;
+  }
+
+  @media only screen and (orientation: landscape) and (max-width: 768px) {
+    margin-top: 90px;
   }
 
   @media only screen and (max-width: 480px) {
@@ -58,7 +63,7 @@
         transition: all 0.3s;
 
         @media only screen and (max-width: 480px) {
-          min-height: 15rem;
+          min-height: 16rem;
         }
 
         &__header {

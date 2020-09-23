@@ -1,8 +1,13 @@
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  min-height: 68px;
   height: 10vh;
   background-color: #2a3f59;
   padding: 0.5rem 1rem;
+  z-index: 100;
 
   @media only screen and (max-width: 1200px) {
     min-height: 68px;
@@ -19,8 +24,19 @@
     height: 100%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: 600px) {
+      justify-content: space-between;
+    }
+
+    .spacer {
+      flex: 1;
+
+      @media only screen and (max-width: 600px) {
+        display: none;
+      }
+    }
 
     .logo {
       height: 100%;
@@ -66,12 +82,12 @@
         width: 50%;
       }
 
-      @media only screen and (max-width: 600px) {
-        width: 60%;
-      }
-
       @media only screen and (orientation: landscape) and (max-width: 768px) {
         width: 40%;
+      }
+
+      @media only screen and (max-width: 600px) {
+        display: none;
       }
 
       .signedOut {
