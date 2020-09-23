@@ -58,7 +58,7 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container signup">
       {redirectUser()}
       <form
         className="signup"
